@@ -264,20 +264,20 @@ public class World {
 		points.add(new Point(x, y, z));
 		
 		while (!points.isEmpty()){
-			Point p = points.remove(0);
-			checked.add(p);
+			Point point = points.remove(0);
+			checked.add(point);
 			
-			if (!tile(p.x, p.y, p.z).isGround())
+			if (!tile(point.x, point.y, point.z).isGround())
 				continue;
 				
-			if (items[p.x][p.y][p.z] == null){
-				items[p.x][p.y][p.z] = item;
-				Creature c = this.creature(p.x, p.y, p.z);
+			if (items[point.x][point.y][point.z] == null){
+				items[point.x][point.y][point.z] = item;
+				Creature c = this.creature(point.x, point.y, point.z);
 				if (c != null)
 					c.notify("A %s lands between your feet.", c.nameOf(item));
 				return true;
 			} else {
-				List<Point> neighbors = p.neighbors8();
+				List<Point> neighbors = point.neighbors8();
 				neighbors.removeAll(checked);
 				points.addAll(neighbors);
 			}

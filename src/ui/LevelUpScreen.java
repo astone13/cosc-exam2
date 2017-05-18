@@ -7,17 +7,36 @@ import asciiPanel.AsciiPanel;
 import game.Creature;
 import game.LevelUpController;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LevelUpScreen.
+ */
 public class LevelUpScreen implements Screen {
+	
+	/** The controller. */
 	private LevelUpController controller;
+	
+	/** The player. */
 	private Creature player;
+	
+	/** The picks. */
 	private int picks;
 	
+	/**
+	 * Instantiates a new level up screen.
+	 *
+	 * @param player the player
+	 * @param picks the picks
+	 */
 	public LevelUpScreen(Creature player, int picks){
 		this.controller = new LevelUpController();
 		this.player = player;
 		this.picks = picks;
 	}
 	
+	/* (non-Javadoc)
+	 * @see ui.Screen#displayOutput(asciiPanel.AsciiPanel)
+	 */
 	@Override
 	public void displayOutput(AsciiPanel terminal) {
 		List<String> options = controller.getLevelUpOptions();
@@ -32,6 +51,9 @@ public class LevelUpScreen implements Screen {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see ui.Screen#respondToUserInput(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public Screen respondToUserInput(KeyEvent key) {
 		List<String> options = controller.getLevelUpOptions();

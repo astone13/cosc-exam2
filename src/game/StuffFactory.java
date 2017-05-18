@@ -10,17 +10,35 @@ import java.util.Map;
 
 import asciiPanel.AsciiPanel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A factory for creating Stuff objects.
+ */
 public class StuffFactory {
+	
+	/** The world. */
 	private World world;
+	
+	/** The potion colors. */
 	private Map<String, Color> potionColors;
+	
+	/** The potion appearances. */
 	private List<String> potionAppearances;
 	
+	/**
+	 * Instantiates a new stuff factory.
+	 *
+	 * @param world the world
+	 */
 	public StuffFactory(World world){
 		this.world = world;
 		
 		setUpPotionAppearances();
 	}
 	
+	/**
+	 * Sets the up potion appearances.
+	 */
 	private void setUpPotionAppearances(){
 		potionColors = new HashMap<String, Color>();
 		potionColors.put("red potion", AsciiPanel.brightRed);
@@ -37,6 +55,13 @@ public class StuffFactory {
 		Collections.shuffle(potionAppearances);
 	}
 	
+	/**
+	 * New player.
+	 *
+	 * @param messages the messages
+	 * @param fov the fov
+	 * @return the creature
+	 */
 	public Creature newPlayer(List<String> messages, FieldOfView fov){
 		Creature player = new Creature(world, '@', AsciiPanel.brightWhite, "player", 100, 20, 5);
 		world.addAtEmptyLocation(player, 0);
@@ -44,6 +69,12 @@ public class StuffFactory {
 		return player;
 	}
 	
+	/**
+	 * New fungus.
+	 *
+	 * @param depth the depth
+	 * @return the creature
+	 */
 	public Creature newFungus(int depth){
 		Creature fungus = new Creature(world, 'f', AsciiPanel.green, "fungus", 10, 0, 0);
 		world.addAtEmptyLocation(fungus, depth);
@@ -51,6 +82,12 @@ public class StuffFactory {
 		return fungus;
 	}
 	
+	/**
+	 * New bat.
+	 *
+	 * @param depth the depth
+	 * @return the creature
+	 */
 	public Creature newBat(int depth){
 		Creature bat = new Creature(world, 'b', AsciiPanel.brightYellow, "bat", 15, 5, 0);
 		world.addAtEmptyLocation(bat, depth);
@@ -58,6 +95,13 @@ public class StuffFactory {
 		return bat;
 	}
 	
+	/**
+	 * New zombie.
+	 *
+	 * @param depth the depth
+	 * @param player the player
+	 * @return the creature
+	 */
 	public Creature newZombie(int depth, Creature player){
 		Creature zombie = new Creature(world, 'z', AsciiPanel.white, "zombie", 50, 10, 10);
 		world.addAtEmptyLocation(zombie, depth);
@@ -65,6 +109,13 @@ public class StuffFactory {
 		return zombie;
 	}
 
+	/**
+	 * New goblin.
+	 *
+	 * @param depth the depth
+	 * @param player the player
+	 * @return the creature
+	 */
 	public Creature newGoblin(int depth, Creature player){
 		Creature goblin = new Creature(world, 'g', AsciiPanel.brightGreen, "goblin", 66, 15, 5);
 		new GoblinAi(goblin, player);
@@ -74,6 +125,12 @@ public class StuffFactory {
 		return goblin;
 	}
 	
+	/**
+	 * New rock.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newRock(int depth){
 		Item rock = new Item(',', AsciiPanel.yellow, "rock", null);
 		rock.modifyThrownAttackValue(5);
@@ -81,12 +138,24 @@ public class StuffFactory {
 		return rock;
 	}
 	
+	/**
+	 * New victory item.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newVictoryItem(int depth){
 		Item item = new Item('*', AsciiPanel.brightWhite, "teddy bear", null);
 		world.addAtEmptyLocation(item, depth);
 		return item;
 	}
 	
+	/**
+	 * New bread.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newBread(int depth){
 		Item item = new Item('%', AsciiPanel.yellow, "bread", null);
 		item.modifyFoodValue(400);
@@ -94,6 +163,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New fruit.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newFruit(int depth){
 		Item item = new Item('%', AsciiPanel.brightRed, "apple", null);
 		item.modifyFoodValue(100);
@@ -101,6 +176,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New dagger.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newDagger(int depth){
 		Item item = new Item(')', AsciiPanel.white, "dagger", null);
 		item.modifyAttackValue(5);
@@ -109,6 +190,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New sword.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newSword(int depth){
 		Item item = new Item(')', AsciiPanel.brightWhite, "sword", null);
 		item.modifyAttackValue(10);
@@ -117,6 +204,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New staff.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newStaff(int depth){
 		Item item = new Item(')', AsciiPanel.yellow, "staff", null);
 		item.modifyAttackValue(5);
@@ -126,6 +219,12 @@ public class StuffFactory {
 		return item;
 	}
 
+	/**
+	 * New bow.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newBow(int depth){
 		Item item = new Item(')', AsciiPanel.yellow, "bow", null);
 		item.modifyAttackValue(1);
@@ -134,6 +233,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New edible weapon.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newEdibleWeapon(int depth){
 		Item item = new Item(')', AsciiPanel.yellow, "baguette", null);
 		item.modifyAttackValue(3);
@@ -142,6 +247,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New light armor.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newLightArmor(int depth){
 		Item item = new Item('[', AsciiPanel.green, "tunic", null);
 		item.modifyDefenseValue(2);
@@ -149,6 +260,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New medium armor.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newMediumArmor(int depth){
 		Item item = new Item('[', AsciiPanel.white, "chainmail", null);
 		item.modifyDefenseValue(4);
@@ -156,6 +273,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New heavy armor.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newHeavyArmor(int depth){
 		Item item = new Item('[', AsciiPanel.brightWhite, "platemail", null);
 		item.modifyDefenseValue(6);
@@ -163,6 +286,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * Random weapon.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item randomWeapon(int depth){
 		switch ((int)(Math.random() * 3)){
 		case 0: return newDagger(depth);
@@ -172,6 +301,12 @@ public class StuffFactory {
 		}
 	}
 
+	/**
+	 * Random armor.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item randomArmor(int depth){
 		switch ((int)(Math.random() * 3)){
 		case 0: return newLightArmor(depth);
@@ -180,6 +315,12 @@ public class StuffFactory {
 		}
 	}
 	
+	/**
+	 * New potion of health.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newPotionOfHealth(int depth){
 		String appearance = potionAppearances.get(0);
 		final Item item = new Item('!', potionColors.get(appearance), "health potion", appearance);
@@ -197,6 +338,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New potion of mana.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newPotionOfMana(int depth){
 		String appearance = potionAppearances.get(1);
 		final Item item = new Item('!', potionColors.get(appearance), "mana potion", appearance);
@@ -214,6 +361,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New potion of slow health.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newPotionOfSlowHealth(int depth){
 		String appearance = potionAppearances.get(2);
 		final Item item = new Item('!', potionColors.get(appearance), "slow health potion", appearance);
@@ -232,6 +385,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New potion of poison.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newPotionOfPoison(int depth){
 		String appearance = potionAppearances.get(3);
 		final Item item = new Item('!', potionColors.get(appearance), "poison potion", appearance);
@@ -250,6 +409,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New potion of warrior.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newPotionOfWarrior(int depth){
 		String appearance = potionAppearances.get(4);
 		final Item item = new Item('!', potionColors.get(appearance), "warrior's potion", appearance);
@@ -270,6 +435,12 @@ public class StuffFactory {
 		return item;
 	}
 
+	/**
+	 * New potion of archer.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newPotionOfArcher(int depth){
 		String appearance = potionAppearances.get(5);
 		final Item item = new Item('!', potionColors.get(appearance), "archers potion", appearance);
@@ -288,6 +459,12 @@ public class StuffFactory {
 		return item;
 	}
 
+	/**
+	 * New potion of experience.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newPotionOfExperience(int depth){
 		String appearance = potionAppearances.get(6);
 		final Item item = new Item('!', potionColors.get(appearance), "experience potion", appearance);
@@ -302,6 +479,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * Random potion.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item randomPotion(int depth){
 		switch ((int)(Math.random() * 9)){
 		case 0: return newPotionOfHealth(depth);
@@ -316,6 +499,12 @@ public class StuffFactory {
 		}
 	}
 	
+	/**
+	 * New white mages spellbook.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newWhiteMagesSpellbook(int depth) {
 		Item item = new Item('+', AsciiPanel.brightWhite, "white mage's spellbook", null);
 		item.addWrittenSpell("minor heal", 4, new Effect(1){
@@ -372,6 +561,12 @@ public class StuffFactory {
 		return item;
 	}
 	
+	/**
+	 * New blue mages spellbook.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item newBlueMagesSpellbook(int depth) {
 		Item item = new Item('+', AsciiPanel.brightBlue, "blue mage's spellbook", null);
 
@@ -445,6 +640,12 @@ public class StuffFactory {
 	}
 	
 
+	/**
+	 * Random spell book.
+	 *
+	 * @param depth the depth
+	 * @return the item
+	 */
 	public Item randomSpellBook(int depth){
 		switch ((int)(Math.random() * 2)){
 		case 0: return newWhiteMagesSpellbook(depth);

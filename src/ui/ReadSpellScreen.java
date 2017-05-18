@@ -8,14 +8,35 @@ import game.Creature;
 import game.Item;
 import game.Spell;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReadSpellScreen.
+ */
 public class ReadSpellScreen implements Screen {
 
+	/** The player. */
 	protected Creature player;
+	
+	/** The letters. */
 	private String letters;
+	
+	/** The item. */
 	private Item item;
+	
+	/** The sx. */
 	private int sx;
+	
+	/** The sy. */
 	private int sy;
 	
+	/**
+	 * Instantiates a new read spell screen.
+	 *
+	 * @param player the player
+	 * @param sx the sx
+	 * @param sy the sy
+	 * @param item the item
+	 */
 	public ReadSpellScreen(Creature player, int sx, int sy, Item item){
 		this.player = player;
 		this.letters = "abcdefghijklmnopqrstuvwxyz";
@@ -24,6 +45,9 @@ public class ReadSpellScreen implements Screen {
 		this.sy = sy;
 	}
 	
+	/* (non-Javadoc)
+	 * @see ui.Screen#displayOutput(asciiPanel.AsciiPanel)
+	 */
 	public void displayOutput(AsciiPanel terminal) {
 		ArrayList<String> lines = getList();
 		
@@ -43,6 +67,11 @@ public class ReadSpellScreen implements Screen {
 		terminal.repaint();
 	}
 	
+	/**
+	 * Gets the list.
+	 *
+	 * @return the list
+	 */
 	private ArrayList<String> getList() {
 		ArrayList<String> lines = new ArrayList<String>();
 		
@@ -56,6 +85,9 @@ public class ReadSpellScreen implements Screen {
 		return lines;
 	}
 
+	/* (non-Javadoc)
+	 * @see ui.Screen#respondToUserInput(java.awt.event.KeyEvent)
+	 */
 	public Screen respondToUserInput(KeyEvent key) {
 		char c = key.getKeyChar();
 
@@ -72,6 +104,12 @@ public class ReadSpellScreen implements Screen {
 		}
 	}
 
+	/**
+	 * Use.
+	 *
+	 * @param spell the spell
+	 * @return the screen
+	 */
 	protected Screen use(Spell spell){
 		if (spell.requiresTarget())
 			return new CastSpellScreen(player, "", sx, sy, spell);

@@ -4,10 +4,30 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Line.
+ */
 public class Line implements Iterable<Point> {
+	
+	/** The points. */
 	private List<Point> points;
+	
+	/**
+	 * Gets the points.
+	 *
+	 * @return the points
+	 */
 	public List<Point> getPoints() { return points; }
 	
+	/**
+	 * Instantiates a new line.
+	 *
+	 * @param x0 the x 0
+	 * @param y0 the y 0
+	 * @param x1 the x 1
+	 * @param y1 the y 1
+	 */
 	public Line(int x0, int y0, int x1, int y1) {
 		points = new ArrayList<Point>();
 		
@@ -36,6 +56,9 @@ public class Line implements Iterable<Point> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Iterable#iterator()
+	 */
 	@Override
 	public Iterator<Point> iterator() {
 		return points.iterator();

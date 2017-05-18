@@ -4,17 +4,37 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Point.
+ */
 public class Point {
+	
+	/** The x. */
 	public int x;
+	
+	/** The y. */
 	public int y;
+	
+	/** The z. */
 	public int z;
 	
+	/**
+	 * Instantiates a new point.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param z the z
+	 */
 	public Point(int x, int y, int z){
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -25,6 +45,9 @@ public class Point {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -43,6 +66,11 @@ public class Point {
 		return true;
 	}
 
+	/**
+	 * Neighbors 8.
+	 *
+	 * @return the list
+	 */
 	public List<Point> neighbors8(){
 		List<Point> points = new ArrayList<Point>();
 		

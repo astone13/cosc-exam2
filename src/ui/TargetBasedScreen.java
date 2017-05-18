@@ -6,15 +6,38 @@ import game.Creature;
 import game.Line;
 import game.Point;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TargetBasedScreen.
+ */
 public abstract class TargetBasedScreen implements Screen {
 
+	/** The player. */
 	protected Creature player;
+	
+	/** The caption. */
 	protected String caption;
+	
+	/** The sx. */
 	private int sx;
+	
+	/** The sy. */
 	private int sy;
+	
+	/** The x. */
 	private int x;
+	
+	/** The y. */
 	private int y;
 	
+	/**
+	 * Instantiates a new target based screen.
+	 *
+	 * @param player the player
+	 * @param caption the caption
+	 * @param sx the sx
+	 * @param sy the sy
+	 */
 	public TargetBasedScreen(Creature player, String caption, int sx, int sy){
 		this.player = player;
 		this.caption = caption;
@@ -22,6 +45,9 @@ public abstract class TargetBasedScreen implements Screen {
 		this.sy = sy;
 	}
 
+	/* (non-Javadoc)
+	 * @see ui.Screen#displayOutput(asciiPanel.AsciiPanel)
+	 */
 	@Override
 	public void displayOutput(AsciiPanel terminal) {
 		for (Point p : new Line(sx, sy, sx + x, sy + y)){
@@ -35,6 +61,9 @@ public abstract class TargetBasedScreen implements Screen {
 		terminal.write(caption, 0, 23);
 	}
 
+	/* (non-Javadoc)
+	 * @see ui.Screen#respondToUserInput(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public Screen respondToUserInput(KeyEvent key) {
 		int px = x;
@@ -67,14 +96,37 @@ public abstract class TargetBasedScreen implements Screen {
 		return this;
 	}
 	
+	/**
+	 * Checks if is acceptable.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return true, if is acceptable
+	 */
 	public boolean isAcceptable(int x, int y) {
 		return true;
 	}
 
+	/**
+	 * Enter world coordinate.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param screenX the screen X
+	 * @param screenY the screen Y
+	 */
 	public void enterWorldCoordinate(int x, int y, int screenX, int screenY) {
 		
 	}
 
+	/**
+	 * Select world coordinate.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param screenX the screen X
+	 * @param screenY the screen Y
+	 */
 	public void selectWorldCoordinate(int x, int y, int screenX, int screenY){
 	}
 }

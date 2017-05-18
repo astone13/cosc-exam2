@@ -6,20 +6,54 @@ import asciiPanel.AsciiPanel;
 import game.Creature;
 import game.Item;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InventoryBasedScreen.
+ */
 public abstract class InventoryBasedScreen implements Screen {
 
+	/** The player. */
 	protected Creature player;
+	
+	/** The letters. */
 	private String letters;
 	
+	/**
+	 * Gets the verb.
+	 *
+	 * @return the verb
+	 */
 	protected abstract String getVerb();
+	
+	/**
+	 * Checks if is acceptable.
+	 *
+	 * @param item the item
+	 * @return true, if is acceptable
+	 */
 	protected abstract boolean isAcceptable(Item item);
+	
+	/**
+	 * Use.
+	 *
+	 * @param item the item
+	 * @return the screen
+	 */
 	protected abstract Screen use(Item item);
 	
+	/**
+	 * Instantiates a new inventory based screen.
+	 *
+	 * @param player the player
+	 */
 	public InventoryBasedScreen(Creature player){
 		this.player = player;
 		this.letters = "abcdefghijklmnopqrstuvwxyz";
 	}
 	
+	/* (non-Javadoc)
+	 * @see ui.Screen#displayOutput(asciiPanel.AsciiPanel)
+	 */
 	public void displayOutput(AsciiPanel terminal) {
 		ArrayList<String> lines = getList();
 		
@@ -39,6 +73,11 @@ public abstract class InventoryBasedScreen implements Screen {
 		terminal.repaint();
 	}
 	
+	/**
+	 * Gets the list.
+	 *
+	 * @return the list
+	 */
 	private ArrayList<String> getList() {
 		ArrayList<String> lines = new ArrayList<String>();
 		Item[] inventory = player.inventory().getItems();
@@ -59,6 +98,9 @@ public abstract class InventoryBasedScreen implements Screen {
 		return lines;
 	}
 
+	/* (non-Javadoc)
+	 * @see ui.Screen#respondToUserInput(java.awt.event.KeyEvent)
+	 */
 	public Screen respondToUserInput(KeyEvent key) {
 		char c = key.getKeyChar();
 

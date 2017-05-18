@@ -349,18 +349,7 @@ public class Creature {
 		this.regenManaPer1000 = 20;
 	}
 	
-	/**
-	 * Move by.
-	 *
-	 * @param mx the mx
-	 * @param my the my
-	 * @param mz the mz
-	 */
-	public void moveBy(int mx, int my, int mz){
-		if (mx==0 && my==0 && mz==0)
-			return;
-		
-		Tile tile = world.tile(x+mx, y+my, z+mz);
+	public void callAction(int mz, Tile tile){
 		
 		if (mz == -1){
 			if (tile == Tile.STAIRS_DOWN) {
@@ -377,6 +366,23 @@ public class Creature {
 				return;
 			}
 		}
+		
+	}
+	
+	/**
+	 * Move by.
+	 *
+	 * @param mx the mx
+	 * @param my the my
+	 * @param mz the mz
+	 */
+	public void moveBy(int mx, int my, int mz){
+		if (mx==0 && my==0 && mz==0)
+			return;
+		
+		Tile tile = world.tile(x+mx, y+my, z+mz);
+		
+		callAction(mz, tile);
 		
 		Creature other = world.creature(x+mx, y+my, z+mz);
 		

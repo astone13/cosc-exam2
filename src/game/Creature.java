@@ -333,7 +333,7 @@ public class Creature {
 		
 		StringBuilder builder = new StringBuilder();
 		for (String word : words){
-			builder.append(" ");
+			builder.append(' ');
 			builder.append(word);
 		}
 		
